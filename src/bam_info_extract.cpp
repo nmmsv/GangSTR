@@ -91,7 +91,7 @@ bool BamInfoExtract::GetInsertSizeDistribution(std::map<std::string, SampleProfi
   // TODO change 200000 flank size to something appropriate
   int32_t flank_size = 400000;
   int32_t exclusion_margin = 1000;
-  int32_t min_req_reads = 50000;
+  int32_t min_req_reads = 7000;
   bool found_ins_distribution = false, found_coverage = false;
   double mean_b, mean_a, std_b, std_a; // mean and std dev, before and after locus
   int* valid_temp_len_arr;
@@ -135,6 +135,7 @@ bool BamInfoExtract::GetInsertSizeDistribution(std::map<std::string, SampleProfi
     for (int i = 0; i < dist_size; i++){
       dist_count[i] = 0;
     }
+    cerr << temp_len_vec.size() << " " << min_req_reads << endl;
     // if there's enough reads, compute and return TODO set threshold
     if (temp_len_vec.size() > min_req_reads) {
       if (reads_before > reads_after){
